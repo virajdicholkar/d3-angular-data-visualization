@@ -1,0 +1,36 @@
+[{
+        "year": 2006,
+        "population": 10,
+        "male_population": 5
+    },
+    {
+        "year": 2008,
+        "population": 45,
+        "male_population": 40
+    },
+    {
+        "year": 2010,
+        "population": 30,
+        "male_population": 10
+    },
+    {
+        "year": 2012,
+        "population": 60,
+        "male_population": 50
+    },
+    {
+        "year": 2014,
+        "population": 53,
+        "male_population": 20
+    },
+    {
+        "year": 2016,
+        "population": 57,
+        "male_population": 30
+    },
+    {
+        "year": 2017,
+        "population": 60,
+        "male_population": 30
+    }
+]
