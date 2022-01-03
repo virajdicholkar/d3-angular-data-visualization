@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { BaseChartComponent } from './base-chart/base-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent
+    LineChartComponent,
+    BaseChartComponent
   ],
   imports: [
     BrowserModule,
