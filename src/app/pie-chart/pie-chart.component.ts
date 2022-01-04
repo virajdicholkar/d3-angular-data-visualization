@@ -39,8 +39,8 @@ export class PieChartComponent extends BaseChartComponent {
       .innerRadius(0);
 
     this.outerArc = this.d3.arc()
-      .innerRadius(this.radius * 0.83)
-      .outerRadius(0);
+      .innerRadius(0)
+      .outerRadius(this.radius * 0.83);
   }
 
   drawChart(): void {
@@ -116,7 +116,7 @@ export class PieChartComponent extends BaseChartComponent {
     console.log('text', text)
 
     const labelArc = this.d3.arc()
-      .innerRadius(this.radius * 0.6)
+      .innerRadius(this.radius * 0.5)
       .outerRadius(this.radius * 0.7);
     const totalPopulation = this.d3.sum(this.data, (d) => d.population);
     const labels = text.enter()
