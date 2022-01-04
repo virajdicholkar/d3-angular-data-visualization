@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { MultiLineComponentComponent } from './multi-line-component/multi-line-component.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 const routes: Routes = [{
   path: '',
-  pathMatch:'full',
-  redirectTo: '/multi-line-chart'
+  pathMatch: 'full',
+  redirectTo: '/line-chart'
 },
 {
   path: 'line-chart',
@@ -15,6 +16,10 @@ const routes: Routes = [{
 {
   path: 'multi-line-chart',
   component: MultiLineComponentComponent
+},
+{
+  path: 'pie-chart',
+  component: PieChartComponent
 }
 ];
 

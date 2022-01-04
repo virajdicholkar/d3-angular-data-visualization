@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { BaseChartComponent } from './base-chart/base-chart.component';
 import { MultiLineComponentComponent } from './multi-line-component/multi-line-component.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LineChartComponent,
     BaseChartComponent,
-    MultiLineComponentComponent
+    MultiLineComponentComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
