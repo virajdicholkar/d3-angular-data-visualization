@@ -14,6 +14,8 @@ export class LineChartComponent extends BaseChartComponent {
   path: any;
   pointsAndLabels: any;
   color = 'red'
+  yAxisLabel: any;
+  xAxisLabel: any;
 
   constructor() {
     super()
@@ -23,7 +25,7 @@ export class LineChartComponent extends BaseChartComponent {
     this.formatData();
     this.defineScale();
     this.drawAxis();
-    // this.addAxisLabels();
+    this.addAxisLabels();
     this.drawGridLines();
   }
 
@@ -185,4 +187,17 @@ export class LineChartComponent extends BaseChartComponent {
       .style("font-weight", "bolder")
   }
 
+  addAxisLabels() {
+    this.yAxisLabel = this.graph.append("text")
+      .attr("transform", `translate(20 ${this.height / 2}) rotate(-90)`)
+      .attr("dy", "1em")
+      .attr("font-size", "23")
+      .text("Population");
+
+    this.xAxisLabel = this.graph.append("text")
+      .attr("transform", `translate(${this.width / 2} ${this.height + 40 })`)
+      .attr("dy", "1em")
+      .attr("font-size", "23")
+      .text("Years");
+  }
 }
