@@ -25,10 +25,10 @@ export class BaseChartComponent implements OnInit, AfterViewInit {
   height: number = 750;
   formattedData: any[];
   margin = {
-    top: 20,
+    top: 50,
     right: 20,
-    bottom: 30,
-    left: 50
+    bottom: 60,
+    left: 100
   }
   graph: d3.Selection<SVGGElement, unknown, null, undefined>;
   colorScale: d3.ScaleOrdinal<string, unknown, never>;
