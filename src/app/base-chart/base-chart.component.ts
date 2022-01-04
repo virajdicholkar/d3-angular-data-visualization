@@ -45,11 +45,11 @@ export class BaseChartComponent implements OnInit, AfterViewInit {
     this.afterDrawChart();
   }
 
-  setSVG() {
-    const { top, left, right, bottom } = this.margin;
+  setSVG(width = this.width, height = this.height, margin = this.margin) {
+    const { top, left, right, bottom } = margin;
     this.svg = this.d3.select(this.svgRef.nativeElement)
-      .attr("width", this.width + left + right)
-      .attr("height", this.height + top + bottom);
+      .attr("width", width + left + right)
+      .attr("height", height + top + bottom);
     this.graph = this.svg
       .append('g')
       .attr("transfom", `translate(${left}, ${top})`)
@@ -70,4 +70,5 @@ export class BaseChartComponent implements OnInit, AfterViewInit {
   formatData(): void { }
   defineScale(): void { }
   addLegends(): void { }
+
 }
