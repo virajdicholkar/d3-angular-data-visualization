@@ -157,10 +157,10 @@ export class MultiLineComponentComponent extends LineChartComponent {
       .enter()
       .append('g')
 
-    const commonY = 95;
+    const commonY = this.margin.top + 25;
     this.legends
       .append('rect')
-      .attr("x", 100)
+      .attr("x", this.margin.left + 40)
       .attr("y", (d, i) => {
         return commonY + (i * 50)
       })
@@ -169,7 +169,7 @@ export class MultiLineComponentComponent extends LineChartComponent {
       .attr("fill", (d, i) => this.colorScale(this.formattedData[i].name) as any)
     this.legends
       .append('text')
-      .attr("x", 120)
+      .attr("x", this.margin.left + 60)
       .attr("y", (d, i) => {
         return commonY + 10 + (i * 50)
       })

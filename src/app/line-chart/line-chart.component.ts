@@ -22,7 +22,8 @@ export class LineChartComponent extends BaseChartComponent {
   beforeDrawChart(): void {
     this.formatData();
     this.defineScale();
-    this.drawAxis()
+    this.drawAxis();
+    // this.addAxisLabels();
     this.drawGridLines();
   }
 
@@ -57,7 +58,7 @@ export class LineChartComponent extends BaseChartComponent {
     return this.yScale(d.population);
   }
 
-  defineLine(){
+  defineLine() {
     this.line = this.d3.line()
       .x((d) => this.getX(d))
       .y((d) => this.getY(d))
@@ -132,14 +133,13 @@ export class LineChartComponent extends BaseChartComponent {
         .attr('r', 10)
       that.d3.select(this as any)
         .select('text')
-        .style('fill', 'blue')
         .style('font-size', '20px')
         .style('display', 'block')
     })
     this.pointsAndLabels.on('mouseout', function (d, i) {
       console.log('out====>d, i', d, i)
-      that.d3.select(this as any).select('circle').attr('r', 5).attr('fill', this.color)
-      that.d3.select(this as any).select('text').style('fill', this.color)
+      that.d3.select(this as any).select('circle').attr('r', 5)
+      that.d3.select(this as any).select('text')
         .style('font-size', '16px')
         .style('display', 'none')
     })
@@ -170,18 +170,19 @@ export class LineChartComponent extends BaseChartComponent {
       .append('g')
       .attr('class', 'legends')
     this.legends.append('circle')
-      .attr('cx', 100)
-      .attr('cy', 42)
+      .attr('cx', this.margin.left + 40)
+      .attr('cy', this.margin.top + 20)
       .attr('r', 5)
       .text('Yearwise population')
       .attr('fill', this.color)
     this.legends
       .append('text')
-      .attr("x", 120)
-      .attr("y", 50)
+      .attr("x", this.margin.left + 60)
+      .attr("y", this.margin.top + 25)
       .text(`Yearwise population`)
       .attr("fill", this.color)
       .style("font-size", "25px")
       .style("font-weight", "bolder")
   }
+
 }
