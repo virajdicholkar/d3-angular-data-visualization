@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { BaseChartComponent } from './base-chart/base-chart.component';
+import { MultiLineComponentComponent } from './multi-line-component/multi-line-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LineChartComponent,
-    BaseChartComponent
+    BaseChartComponent,
+    MultiLineComponentComponent
   ],
   imports: [
     BrowserModule,

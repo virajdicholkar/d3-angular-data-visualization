@@ -55,12 +55,15 @@ export class LineChartComponent extends BaseChartComponent {
     return this.yScale(d.population);
   }
 
-  drawChart(): void {
+  defineLine(){
     this.line = this.d3.line()
       .x((d) => this.getX(d))
       .y((d) => this.getY(d))
       .curve(this.d3.curveMonotoneX);
+  }
 
+  drawChart(): void {
+    this.defineLine();
     this.path = this.graph
       .append('path')
       .datum(this.formattedData)

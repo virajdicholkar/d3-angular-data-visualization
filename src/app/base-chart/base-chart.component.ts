@@ -16,9 +16,11 @@ export interface PopulationData {
 export class BaseChartComponent implements OnInit, AfterViewInit {
 
   @ViewChild('svg') svgRef: ElementRef<SVGElement>;
+  @ViewChild('tooltip') tooltipRef: ElementRef<HTMLDivElement>;
   d3 = d3;
   data = data;
   private svg: d3.Selection<SVGElement, unknown, null, undefined>;
+  tooltip: any;
   width: number = 1000;
   height: number = 750;
   formattedData: any[];
