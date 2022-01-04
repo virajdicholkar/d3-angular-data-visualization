@@ -8,6 +8,9 @@ import { LineChartComponent } from '../line-chart/line-chart.component';
 })
 export class BarChartComponent extends LineChartComponent {
 
+  selectedX = ''
+  selectedY = ''
+  bars: any;
   constructor() {
     super()
   }
@@ -16,6 +19,11 @@ export class BarChartComponent extends LineChartComponent {
     this.color = '#66c2a5'
   }
 
+  ngAfterViewInit(): void {
+    super.ngAfterViewInit()
+    this.tooltip = this.d3.select(this.tooltipRef.nativeElement);
+    console.log('this.tooltip', this.tooltip)
+  }
   defineScale(): void {
     const xValues = this.formattedData.map(d => d.year)
     console.log('xValues', xValues)
@@ -34,7 +42,7 @@ export class BarChartComponent extends LineChartComponent {
       ])
   }
   drawChart(): void {
-    this.graph.selectAll(".bar")
+    this.bars = this.graph.selectAll(".bar")
       .data(this.formattedData)
       .enter()
       .append("rect")
@@ -44,6 +52,40 @@ export class BarChartComponent extends LineChartComponent {
       .attr("width", this.xScale.bandwidth())
       .attr("height", (d) => this.height - this.yScale(d.population))
       .attr("fill", this.color)
+
+    this.bars.on('mouseover', (event, currentPoint) => {
+      console.log('d, i', event, currentPoint)
+      console.log('d, i', event.pageY - 10, currentPoint)
+      this.selectedX = `${new Date(currentPoint.year).getFullYear()}`
+      this.selectedY = currentPoint.population
+      this.tooltip
+        .style("left", event.offsetX + "px")
+        .style("top", (event.offsetY + 20) + "px")
+        .transition()
+        .duration(100)
+        .style("opacity", .9)
+    })
+
+    this.bars.on('mousemove', (event, currentPoint) => {
+      console.log('d, i', event, currentPoint)
+      console.log('d, i', event.pageY - 10, currentPoint)
+      this.selectedX = `${new Date(currentPoint.year).getFullYear()}`
+      this.selectedY = currentPoint.population
+      this.tooltip
+        .style("left", event.offsetX + "px")
+        .style("top", (event.offsetY + 20) + "px")
+        .transition()
+        // .duration(200)
+        .style("opacity", .9)
+    })
+
+    this.bars.on('mouseout', (d, i) => {
+      console.log('out====>d, i', d, i)
+      this.tooltip
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+    })
     this.animateChart()
   }
 
