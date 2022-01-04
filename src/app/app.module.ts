@@ -7,6 +7,7 @@ import { LineChartComponent } from './line-chart/line-chart.component';
 import { BaseChartComponent } from './base-chart/base-chart.component';
 import { MultiLineComponentComponent } from './multi-line-component/multi-line-component.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     LineChartComponent,
     BaseChartComponent,
     MultiLineComponentComponent,
-    PieChartComponent
+    PieChartComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ export class LineChartComponent extends BaseChartComponent {
   line: any;
   path: any;
   pointsAndLabels: any;
+  color = 'red'
 
   constructor() {
     super()
@@ -22,6 +23,7 @@ export class LineChartComponent extends BaseChartComponent {
     this.formatData();
     this.defineScale();
     this.drawAxis()
+    this.drawGridLines();
   }
 
   defineScale(): void {
@@ -69,7 +71,7 @@ export class LineChartComponent extends BaseChartComponent {
       .datum(this.formattedData)
       .attr("d", this.line)
       .attr('fill', 'none')
-      .attr('stroke', 'red')
+      .attr('stroke', this.color)
       .attr('stroke-width', 3)
       .attr('stroke-linejoin', 'round')
 
@@ -86,7 +88,6 @@ export class LineChartComponent extends BaseChartComponent {
 
   afterDrawChart(): void {
     this.drawPointsAndLabels();
-    this.drawGridLines();
     this.addLegends();
   }
 
@@ -118,7 +119,7 @@ export class LineChartComponent extends BaseChartComponent {
 
     this.pointsAndLabels.append('text')
       .text(d => `${new Date(d.year).getFullYear()}, ${d.population}`)
-      .style('fill', 'red')
+      .style('fill', this.color)
       .style('display', 'none')
       .attr("x", (d) => this.getX(d))
       .attr("y", (d) => this.getY(d) - 10)
@@ -137,8 +138,8 @@ export class LineChartComponent extends BaseChartComponent {
     })
     this.pointsAndLabels.on('mouseout', function (d, i) {
       console.log('out====>d, i', d, i)
-      that.d3.select(this as any).select('circle').attr('r', 5).attr('fill', 'red')
-      that.d3.select(this as any).select('text').style('fill', 'red')
+      that.d3.select(this as any).select('circle').attr('r', 5).attr('fill', this.color)
+      that.d3.select(this as any).select('text').style('fill', this.color)
         .style('font-size', '16px')
         .style('display', 'none')
     })
@@ -173,13 +174,13 @@ export class LineChartComponent extends BaseChartComponent {
       .attr('cy', 42)
       .attr('r', 5)
       .text('Yearwise population')
-      .attr('fill', 'red')
+      .attr('fill', this.color)
     this.legends
       .append('text')
       .attr("x", 120)
       .attr("y", 50)
       .text(`Yearwise population`)
-      .attr("fill", 'red')
+      .attr("fill", this.color)
       .style("font-size", "25px")
       .style("font-weight", "bolder")
   }
